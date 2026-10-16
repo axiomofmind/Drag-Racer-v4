@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Locate game
+        id: source
+        shell: bash
+        run: |
+          if [ -f game/package.json ]; then
+            echo "directory=game" >> "$GITHUB_OUTPUT"
+          elif [ -f package.json ] && [ -f src/main.js ]; then
+            echo "directory=." >> "$GITHUB_OUTPUT"
+          else
+            echo "Cannot find the Drag Racer game" >&2
+            exit 1
+          fi
+      - name: Test game
+        working-directory: ${{ steps.source.outputs.directory }}
+        run: npm test
+      - name: Check race balance
+        working-directory: ${{ steps.source.outputs.directory }}
+        run: npm run test:balance
+      - name: Package public files
+        env:
+          GAME_DIR: ${{ steps.source.outputs.directory }}
+        run: |
+          mkdir -p _site
+          cp "$GAME_DIR/index.html" _site/index.html
+          cp -R "$GAME_DIR/src" _site/src
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

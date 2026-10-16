@@ -1,0 +1,123 @@
+* { box-sizing: border-box; }
+:root { color-scheme: dark; --bg: #17191e; --panel: #24272e; --line: #42464e; --muted: #b0b3bc; --accent: #ffd34d; --text: #f0f0f2; font-family: "Chakra Petch", system-ui, sans-serif; color: var(--text); background: var(--bg); }
+body { margin: 0; }
+button, input, select { font: inherit; }
+button, select { cursor: pointer; }
+button { border: 1px solid #4e525b; background: #30343d; color: var(--text); padding: 10px 13px; border-radius: 4px; font-weight: 600; }
+button:hover:not(:disabled) { background: #424853; border-color: #9197a1; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+button:disabled { opacity: .4; cursor: not-allowed; }
+button.primary { background: var(--accent); color: #321a0a; border-color: #e7b838; font-family: "Russo One", sans-serif; }
+button.primary:hover:not(:disabled) { background: #ffe58a; }
+button.active { color: #241b09; border-color: var(--accent); background: var(--accent); }
+[hidden] { display: none !important; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: "Russo One", sans-serif; font-weight: 400; }
+.muted { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.eyebrow { font-size: 12px; color: var(--muted); }
+.topbar { max-width: 1120px; margin: auto; padding: 22px 24px 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.brand { font-family: "Russo One", sans-serif; font-size: 29px; font-style: italic; color: #4898ff; letter-spacing: -1px; white-space: nowrap; }
+.brand em { color: #eceff4; font-style: italic; }
+.mode-switch { display: flex; gap: 5px; }
+.mode-switch button { padding: 8px 16px; font-size: 13px; }
+.wallet { color: var(--accent); font: 23px "Share Tech Mono", monospace; min-width: 92px; text-align: right; }
+.workspace { max-width: 1120px; margin: auto; padding: 10px 24px 20px; }
+.garage-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(340px, 1fr); gap: 16px; align-items: stretch; }
+.showroom { background: #333941; border: 1px solid #555c66; border-radius: 6px; overflow: hidden; }
+.car-heading { padding: 18px 21px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.car-heading h1 { font-size: 25px; }
+.car-heading span { font-size: 12px; color: #c4c8d0; white-space: nowrap; }
+.preview { display: block; width: 100%; aspect-ratio: 700 / 340; }
+.car-picker { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 10px; background: #2a2e35; }
+.car-picker button { color: var(--accent); padding: 4px 17px; font-size: 19px; background: transparent; border-color: transparent; }
+.car-picker span { font-size: 12px; color: #c3c7cf; min-width: 80px; text-align: center; }
+.specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px 22px 18px; border-top: 1px solid var(--line); text-align: center; }
+.specs strong { display: block; font: 25px "Share Tech Mono", monospace; }
+.specs small { font: 12px "Chakra Petch", sans-serif; color: var(--muted); }
+.specs span { font-size: 10px; color: #c3c7cf; }
+.panel { min-width: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); display: flex; flex-direction: column; overflow: hidden; }
+.race-panel { background: linear-gradient(120deg, #831d25, #57151c); border-color: #ad343e; }
+.race-panel .muted, .race-panel .race-note { color: #ead0d2; }
+.tabs { display: flex; gap: 3px; padding: 7px; background: #181b21; border-bottom: 1px solid #42464e; }
+.tabs button { flex: 1; min-width: 0; border: 0; padding: 10px 4px; font-size: 12px; background: transparent; }
+.tabs button.active { background: var(--accent); }
+.panel-body { flex: 1; padding: 21px; height: 340px; overflow-y: auto; scrollbar-width: thin; }
+.panel-body h3 { font-size: 20px; margin-bottom: 12px; }
+.panel-body > .muted { margin-bottom: 16px; }
+.tune-label { display: flex; justify-content: space-between; gap: 8px; margin: 22px 0 10px; font-size: 14px; }
+.tune-label span { font-size: 12px; opacity: .8; }
+select { width: 100%; padding: 11px 9px; background: #191c23; border: 1px solid #68606a; border-radius: 4px; color: var(--text); font-size: 13px; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+.opponent { display: flex; justify-content: space-between; margin: 19px 0 8px; gap: 12px; font-size: 14px; }
+.opponent span { color: var(--accent); }
+.race-note { margin-top: 18px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.race-action { padding: 16px 21px; border-top: 1px solid #ffffff15; }
+.race-action .primary { width: 100%; font-size: 20px; padding: 12px; }
+.race-action > span { display: block; text-align: center; font-size: 10px; margin-top: 9px; color: #d9d5d8; }
+.part { padding: 12px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.part strong { font-size: 13px; }
+.part p { font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 4px; }
+.part button { font-size: 12px; white-space: nowrap; }
+.stages { font: 11px "Share Tech Mono", monospace; color: var(--accent); margin-left: 6px; }
+.part-info { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.part-info summary { cursor: pointer; }
+.swatches { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 25px; }
+.swatches button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; padding: 0; }
+.swatches button.active { border-color: white; outline: 2px solid var(--accent); outline-offset: 2px; }
+.wheels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0; }
+.wheels button { text-align: left; font-size: 12px; }
+.wheels small { display: block; margin-top: 5px; font-size: 10px; }
+.dealer { padding: 15px 0; border-top: 1px solid var(--line); }
+.dealer h3 { font-size: 17px; margin-bottom: 7px; }
+.dealer p { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.dealer button { width: 100%; font-size: 12px; }
+.footer { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding-top: 15px; color: var(--muted); font-size: 11px; }
+.footer details { max-width: 700px; line-height: 1.8; }
+.footer summary { cursor: pointer; }
+.footer > span { white-space: nowrap; }
+.footer p { margin: 12px 0; }
+.footer-actions { display: flex; gap: 8px; }
+.footer button { font-size: 11px; padding: 7px 10px; }
+#toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #ffdf7a; color: #291f0c; border-radius: 5px; padding: 13px 20px; box-shadow: 0 5px 25px #0008; font-size: 13px; z-index: 10; pointer-events: none; opacity: 0; max-width: 90vw; }
+#toast.show { opacity: 1; }
+.race-toolbar > div { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+#sound-panel { position: fixed; z-index: 20; right: 18px; bottom: 18px; width: min(290px, calc(100vw - 36px)); padding: 16px; border: 1px solid #717681; border-radius: 7px; background: #232730; box-shadow: 0 10px 45px #000a; }
+#sound-panel header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+#sound-close { padding: 3px 10px; font-size: 22px; }
+#mute { width: 100%; }
+#mute[aria-pressed=true] { background: #ffd34d; color: #241b09; }
+#sound-panel label { display: flex; justify-content: space-between; margin: 18px 0 8px; font-size: 13px; }
+#result-actions #run-feedback { color: #d7dbe2; font-size: 13px; line-height: 1.5; max-width: 760px; }
+#result-actions #run-comparison { color: #ffd34d; font-size: 12px; }
+.result-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.footer > button { margin-left: auto; }
+#race-screen{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#05080c}.race-toolbar{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;padding:10px 18px;gap:12px}.race-toolbar strong{font-family:'Russo One',sans-serif;font-size:16px}.race-toolbar small{font:10px 'Chakra Petch',sans-serif;display:block;color:var(--muted);margin-top:4px;letter-spacing:.1em}.race-toolbar button{padding:7px 12px;font-size:12px}.race-stage{position:relative;max-width:100%}#game{display:block;max-width:100%;background:#000}#race-help{font-size:10px;color:var(--muted);padding:9px;letter-spacing:.09em}#pad{display:none;width:min(100%,800px);gap:6px;padding:8px;touch-action:none}#pad button{min-width:0;flex:1;padding:13px 3px;touch-action:none;user-select:none;font-size:12px}#pad .gas{background:#bce56a;color:#10200a;flex:1.5}#pad .nos{background:#2561b3}#pad button.on{filter:brightness(1.5);transform:translateY(2px)}#pause-overlay{position:absolute;inset:0;background:#070d16dd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}#pause-overlay h1{font-size:clamp(18px,4vw,36px)}#result-actions{padding:12px 20px;text-align:center;max-width:960px}#result-actions p{color:var(--accent);font-size:14px;margin-bottom:12px}#result-actions button{margin:0 4px}
+
+@media (any-pointer: coarse), (max-width: 700px) { #pad { display: flex; } #race-help { display: none; } .race-toolbar button { min-height: 40px; } }
+@media (max-width: 800px) {
+  .topbar { padding: 16px; gap: 12px; flex-wrap: wrap; }
+  .brand { font-size: 25px; }
+  .mode-switch { order: 3; width: 100%; }
+  .mode-switch button { flex: 1; }
+  .wallet { font-size: 21px; }
+  .workspace { padding: 0 14px 18px; }
+  .garage-grid { grid-template-columns: 1fr; gap: 12px; }
+  .car-heading { padding: 14px 17px; }
+  .car-heading h1 { font-size: 23px; }
+  .specs { padding: 12px 16px; }
+  .specs strong { font-size: 23px; }
+  .panel-body { height: auto; min-height: 250px; max-height: 390px; padding: 18px; }
+  .race-action { padding: 14px 18px; }
+  .footer { gap: 12px; font-size: 10px; }
+  .race-toolbar { padding: 8px 10px; }
+  .race-toolbar strong { font-size: 13px; }
+  .race-toolbar small { font-size: 8px; }
+  .race-toolbar > strong { max-width: 125px; }
+  .race-toolbar button { padding: 7px 9px; font-size: 11px; }
+  #result-actions #run-feedback { font-size: 12px; }
+  #result-actions p, #result-actions button { font-size: 12px; }
+  #pad button { font-size: 10px; min-height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.rival-pace { font-size: 12px; line-height: 1.5; margin-top: 12px; color: #ffe298; }

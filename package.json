@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node test/sim.mjs && node test/race.mjs && node test/career.mjs && node test/shifting.mjs && node test/race-edge-cases.mjs && node test/feedback.mjs && node test/solo.mjs && node test/progression.mjs",
+    "test:balance": "node test/balance.mjs"
+  }
+}

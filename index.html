@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050506">
+<title>Drag Racer</title>
+<link rel="icon" type="image/svg+xml" href="src/favicon.svg">
+<meta name="description" content="Build your car, beat six rivals, and chase your best quarter-mile time. A free browser drag racing game.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Russo+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="hub"></div>
+<section id="race-screen" hidden aria-label="Drag race">
+  <header class="race-toolbar"><strong>DRAG <em>RACER</em><small id="race-label">NIGHTFALL RACEWAY</small></strong><div><button id="retry" title="Restart this race (R). Abandoned runs earn no cash.">Retry</button><button id="pause">Pause</button><button data-sound-toggle aria-controls="sound-panel" aria-expanded="false">Sound</button><button id="leave">Garage</button></div></header>
+  <div class="race-stage"><canvas id="game" width="960" height="540" aria-label="Race view. Space for gas, up arrow to launch and shift, N for nitrous."></canvas><div id="pause-overlay" hidden><h1>TAKE A BREATHER.</h1><button id="resume" class="primary">Resume race</button></div></div>
+  <div id="race-help">SPACE · GAS &nbsp; ↑ · LAUNCH / SHIFT &nbsp; N · NITROUS &nbsp; R · RETRY &nbsp; ESC · PAUSE</div>
+  <div id="pad" aria-label="Driving controls">
+    <button data-key="ArrowLeft" aria-label="Lower launch RPM">RPM −</button><button data-key="ArrowRight" aria-label="Raise launch RPM">RPM +</button>
+    <button data-key="ArrowDown" aria-label="Downshift">DOWN</button><button data-key="ArrowUp">SHIFT ↑</button><button class="nos" data-key="KeyN">NOS</button><button class="gas" data-key="Space">GAS</button>
+  </div>
+  <div id="result-actions" hidden><p id="reward" role="status"></p><p id="run-feedback"></p><p id="run-comparison"></p><div class="result-buttons"><button id="result-garage">Garage</button><button id="rematch" class="primary">Race again →</button><button id="next-rival" class="primary" hidden>Next rival →</button></div></div>
+</section>
+<section id="sound-panel" role="dialog" aria-labelledby="sound-title" hidden>
+  <header><strong id="sound-title">Sound</strong><button id="sound-close" aria-label="Close sound settings">×</button></header>
+  <button id="mute" aria-pressed="false">Mute</button>
+  <label for="volume">Volume <output id="volume-value" for="volume">70%</output></label>
+  <input id="volume" type="range" min="0" max="100" step="5" value="70">
+</section>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
